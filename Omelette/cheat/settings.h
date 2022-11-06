@@ -5,7 +5,5 @@ namespace settings {
 	{
 		bool showMenu = false;
 		bool autoShoot = false;
-	};
-
-	inline auto cheats = Cheats{ };
+	} cheats;
 }
