@@ -3,6 +3,7 @@
 #include "../imgui/imgui_impl_win32.h"
 
 #include "gui.h"
+#include "settings.h"
 
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
@@ -252,7 +253,7 @@ void gui::Render() noexcept
 		ImGuiWindowFlags_NoMove
 	);
 
-	ImGui::Button("Spam");
+	ImGui::Checkbox("spam", &settings::cheats.autoShoot);
 
 	ImGui::End();
 }

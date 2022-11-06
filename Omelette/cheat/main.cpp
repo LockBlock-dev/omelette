@@ -2,6 +2,9 @@
 #include <iostream>
 
 #include "main.h"
+#include "gui.h"
+#include "settings.h"
+
 
 char gameName[17] = "Chicken Invaders";
 bool autoShootEnabled = false;
@@ -56,7 +59,8 @@ DWORD WINAPI SpamThread(LPVOID param)
 {
     while (true)
     {
-        if (autoShootEnabled && isFocused())
+        std::cout << settings::cheats.autoShoot << isFocused() << std::endl;
+        if (settings::cheats.autoShoot && isFocused())
         {
             autoShoot();
         }
@@ -67,31 +71,69 @@ DWORD WINAPI SpamThread(LPVOID param)
     return 0;
 }
 
+DWORD WINAPI GUIThread(LPVOID param)
+{
+    // Create GUI
+    gui::CreateHWindow(L"Omelette");
+    gui::CreateDevice();
+    gui::CreateImGui();
+
+    while (true)
+    {
+        gui::BeginRender();
+        gui::Render();
+        gui::EndRender();
+
+        Sleep(10);
+    }
+
+    // Destroy GUI
+    gui::DestroyImGui();
+    gui::DestroyDevice();
+    gui::DestroyHWindow();
+
+    return 0;
+}
+
 void cheat::start()
 {
+    HANDLE GUIThreadHandle{};
     HANDLE spamThreadHandle{};
 
     while (true)
     {
+        std::cout << settings::cheats.showMenu << std::endl;
+
         if (GetAsyncKeyState(VK_F1) && 1)
         {
-            if (autoShootEnabled && spamThreadHandle)
-            {
-                TerminateThread(spamThreadHandle, 0);
+            settings::cheats.showMenu = !settings::cheats.showMenu;
+        }
 
-                std::cout << "Spam stopped" << std::endl;
+        if (!settings::cheats.showMenu && GUIThreadHandle)
+        {
+            TerminateThread(GUIThreadHandle, 0); 
+            GUIThreadHandle = {};
+        }
+        else if (settings::cheats.showMenu && !GUIThreadHandle)
+        {
+            GUIThreadHandle = CreateThread(NULL, 0, &GUIThread, NULL, 0, 0);
+        }
 
-                INPUT SHIFT_UP = makeKey(DIKEYBOARD_RSHIFT, true); // Failsafe: prevent the key to be hold down by Windows
-                SendInput(1, &SHIFT_UP, sizeof(INPUT));
-            }
-            else
-            {
-                spamThreadHandle = CreateThread(NULL, 0, &SpamThread, NULL, 0, 0);
+        if (!settings::cheats.autoShoot && spamThreadHandle)
+        {
+            TerminateThread(spamThreadHandle, 0);
+            spamThreadHandle = {};
 
-                std::cout << "Spam started" << std::endl;
-            }
+            std::cout << "Spam stopped" << std::endl;
 
-            autoShootEnabled = !autoShootEnabled;
+            INPUT SHIFT_UP = makeKey(DIKEYBOARD_RSHIFT, true); // Failsafe: prevent the key to be hold down by Windows
+            SendInput(1, &SHIFT_UP, sizeof(INPUT));
+        }
+        else if (settings::cheats.autoShoot && !spamThreadHandle)
+        {
+            spamThreadHandle = CreateThread(NULL, 0, &SpamThread, NULL, 0, 0);
+
+            std::cout << "Spam started" << std::endl;
         }
 
         Sleep(500);
