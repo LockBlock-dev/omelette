@@ -246,7 +246,7 @@ void gui::Render() noexcept
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
 		"Omelette",
-		&isRunning,
+		&settings::cheats.showMenu,
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoSavedSettings |
 		ImGuiWindowFlags_NoCollapse |
