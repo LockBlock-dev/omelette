@@ -205,7 +205,7 @@ void gui::BeginRender() noexcept
 
 		if (message.message == WM_QUIT)
 		{
-			isRunning = !isRunning;
+			settings::cheats.showMenu = !settings::cheats.showMenu;
 			return;
 		}
 	}
@@ -246,14 +246,15 @@ void gui::Render() noexcept
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
 		"Omelette",
-		&isRunning,
+		&settings::cheats.showMenu,
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoSavedSettings |
 		ImGuiWindowFlags_NoCollapse |
 		ImGuiWindowFlags_NoMove
 	);
 
-	ImGui::Checkbox("spam", &settings::cheats.autoShoot);
+	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
+	ImGui::SliderInt("Auto shoot intensity (ms)", &settings::cheats.shootDelay, 1, 1000, "%d ms");
 
 	ImGui::End();
 }

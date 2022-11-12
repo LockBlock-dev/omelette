@@ -5,6 +5,7 @@
 
 DWORD WINAPI MainThread(LPVOID param)
 {
+    // FOR DEBUG PURPOSES
     AllocConsole();
 
     FILE* fDummy;
@@ -12,6 +13,7 @@ DWORD WINAPI MainThread(LPVOID param)
     freopen_s(&fDummy, "CONIN$", "r", stdin);
     freopen_s(&fDummy, "CONOUT$", "w", stderr);
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
+    // END DEBUG
 
     uintptr_t modBase = (uintptr_t)GetModuleHandle(NULL);
 
