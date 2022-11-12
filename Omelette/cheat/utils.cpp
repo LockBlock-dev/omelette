@@ -1,9 +1,11 @@
+#include <vector>
+
 #include "utils.h"
 
 
 char gameName[17] = "Chicken Invaders";
 
-INPUT utils::makeKey(int directInputCode, bool up)
+INPUT makeKey(int directInputCode, bool up)
 {
     INPUT SHIFT;
 
@@ -22,7 +24,7 @@ INPUT utils::makeKey(int directInputCode, bool up)
     return SHIFT;
 }
 
-bool utils::isFocused()
+bool isFocused()
 {
     HWND foregroundWindow = GetForegroundWindow();
     char windowTitle[255];
@@ -34,4 +36,15 @@ bool utils::isFocused()
     }
 
     return false;
+}
+
+uintptr_t getPtrAddr(uintptr_t ptr, std::vector<uintptr_t> offsets)
+{
+    uintptr_t addr = ptr;
+    for (unsigned int i = 0; i < offsets.size(); ++i)
+    {
+        addr = *(uintptr_t*)addr;
+        addr += offsets[i];
+    }
+    return addr;
 }

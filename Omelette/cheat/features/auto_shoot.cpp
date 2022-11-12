@@ -7,13 +7,13 @@
 
 void safeExit()
 {
-    INPUT SHIFT_UP = utils::makeKey(DIKEYBOARD_RSHIFT, true); // Failsafe: prevent the key to be hold down by Windows
+    INPUT SHIFT_UP = makeKey(DIKEYBOARD_RSHIFT, true); // Failsafe: prevent the key to be hold down by Windows
     SendInput(1, &SHIFT_UP, sizeof(INPUT));
 }
 
 void autoShoot()
 {
-    INPUT SHIFT = utils::makeKey(DIKEYBOARD_RSHIFT); // https://stackoverflow.com/a/71629807
+    INPUT SHIFT = makeKey(DIKEYBOARD_RSHIFT); // https://stackoverflow.com/a/71629807
 
     SendInput(1, &SHIFT, sizeof(INPUT));
 
@@ -28,13 +28,13 @@ DWORD WINAPI AutoShootThread(LPVOID param)
 {
     while (true)
     {
-        bool isFocused = utils::isFocused();
+        bool hasFocus = isFocused();
 
-        if (settings::cheats.autoShoot && isFocused)
+        if (settings::cheats.autoShoot && hasFocus)
         {
             autoShoot();
         }
-        else if (!isFocused)
+        else if (!hasFocus)
         {
             safeExit(); // When the focus is lost the key should be released
         }
