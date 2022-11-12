@@ -5,6 +5,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 ## Features
 
 - Autoshot - shoot automatically
+- Lasers level - set any level of lasers (from 0 = 1 laser to 7 = 7 lasers)
 
 ## How to use
 

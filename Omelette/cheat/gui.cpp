@@ -254,7 +254,10 @@ void gui::Render() noexcept
 	);
 
 	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
-	ImGui::SliderInt("Auto shoot intensity (ms)", &settings::cheats.shootDelay, 1, 1000, "%d ms");
+	ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
+
+	ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
+	ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
 
 	ImGui::End();
 }

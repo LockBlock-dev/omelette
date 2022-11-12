@@ -54,6 +54,12 @@
     <ClInclude Include="cheat\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cheat\offsets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cheat\features\lasers_level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -90,6 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cheat\utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cheat\features\lasers_level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

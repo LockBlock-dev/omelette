@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="cheat\features\lasers_level.h" />
+    <ClInclude Include="cheat\offsets.h" />
     <ClInclude Include="cheat\features\auto_shoot.h" />
     <ClInclude Include="cheat\gui.h" />
     <ClInclude Include="cheat\main.h" />
@@ -160,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cheat\features\auto_shoot.cpp" />
+    <ClCompile Include="cheat\features\lasers_level.cpp" />
     <ClCompile Include="cheat\main.cpp" />
     <ClCompile Include="cheat\utils.cpp" />
     <ClCompile Include="dllmain.cpp" />

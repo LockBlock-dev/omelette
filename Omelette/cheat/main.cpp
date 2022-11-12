@@ -3,9 +3,9 @@
 #include "main.h"
 #include "gui.h"
 #include "settings.h"
-#include "utils.h"
 
 #include "features/auto_shoot.h"
+#include "features/lasers_level.h"
 
 
 DWORD WINAPI GUIThread(LPVOID param)
@@ -54,7 +54,8 @@ void cheat::start()
         }
 
         AutoShoot::run();
+        LasersLevel::run();
 
-        Sleep(100);
+        //Sleep(100);
     }
 }
