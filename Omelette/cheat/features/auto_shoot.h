@@ -4,8 +4,5 @@
 namespace AutoShoot {
 	void run();
 
-	struct State
-	{
-		HANDLE AutoShootThread{};
-	} state;
+	inline HANDLE AutoShootThreadHandle{};
 }

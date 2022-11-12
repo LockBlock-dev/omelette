@@ -2,7 +2,7 @@
 
 
 namespace settings {
-	struct Cheats
+	inline struct Cheats
 	{
 		bool showMenu = false;
 		bool autoShoot = false;

@@ -47,14 +47,14 @@ DWORD WINAPI AutoShootThread(LPVOID param)
 
 void AutoShoot::run()
 {
-    if (settings::cheats.autoShoot && !AutoShoot::state.AutoShootThread)
+    if (settings::cheats.autoShoot && !AutoShoot::AutoShootThreadHandle)
     {
-        AutoShoot::state.AutoShootThread = CreateThread(NULL, 0, &AutoShootThread, NULL, 0, 0);
+        AutoShoot::AutoShootThreadHandle = CreateThread(NULL, 0, &AutoShootThread, NULL, 0, 0);
     }
-    else if (!settings::cheats.autoShoot && AutoShoot::state.AutoShootThread)
+    else if (!settings::cheats.autoShoot && AutoShoot::AutoShootThreadHandle)
     {
-        TerminateThread(AutoShoot::state.AutoShootThread, 0);
-        AutoShoot::state.AutoShootThread = {};
+        TerminateThread(AutoShoot::AutoShootThreadHandle, 0);
+        AutoShoot::AutoShootThreadHandle = {};
 
         safeExit();  // When disabling the autoShoot the key should be released
     }
