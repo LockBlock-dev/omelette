@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <iostream>
+
 #include "./cheat/main.h"
 
 
@@ -10,12 +11,10 @@ DWORD WINAPI MainThread(LPVOID param)
 
     FILE* fDummy;
 
-    freopen_s(&fDummy, "CONIN$", "r", stdin);
     freopen_s(&fDummy, "CONOUT$", "w", stderr);
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
     // END DEBUG
 
-    uintptr_t modBase = (uintptr_t)GetModuleHandle(NULL);
 
     cheat::start();
 
