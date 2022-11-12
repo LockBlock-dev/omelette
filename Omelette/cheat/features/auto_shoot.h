@@ -7,7 +7,5 @@ namespace AutoShoot {
 	struct State
 	{
 		HANDLE AutoShootThread{};
-	};
-
-	inline auto state = State{ };
+	} state;
 }
