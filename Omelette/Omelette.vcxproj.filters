@@ -48,12 +48,6 @@
     <ClInclude Include="cheat\settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\auto_shoot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cheat\utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -84,12 +78,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cheat\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\features\auto_shoot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cheat\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
