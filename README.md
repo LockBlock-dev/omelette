@@ -10,7 +10,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 
 - Start the game.
 - Open your favorite DLL injector.
-- Download the cheat from the [`Releases`](../../../releases) or [build it](#compiling-from-source) yourself.
+- Download the cheat from the [`Releases`](../../releases) or [build it](#compiling-from-source) yourself.
 - Inject `Omelette.dll` into the `ChickenInvaders.exe` process.
 - Open the menu by pressing the <kbd>INSERT</kbd> key.
 
