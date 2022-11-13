@@ -3,6 +3,4 @@
 
 namespace AutoShoot {
 	void run();
-
-	inline HANDLE AutoShootThreadHandle{};
 }
