@@ -7,11 +7,11 @@ void LasersLevel::run()
 {
     if (settings::cheats.customLasersLevel)
     {       
-        int* laserLevel = (int*)getPtrAddr(offsets::lasersLevelPtr, offsets::lasersLevelOffset);
+        int* laserLevelAddr = (int*)getPtrAddr(offsets::lasersLevelPtr, offsets::lasersLevelOffsets);
 
-        if (laserLevel > (int*)offsets::moduleBase) // Prevents crash when player dies (address is freed)
+        if (laserLevelAddr > (int*)offsets::moduleBase) // Prevents crash when player dies (address is freed)
         { 
-            *laserLevel = settings::cheats.lasersLevel;
+            *laserLevelAddr = settings::cheats.lasersLevel;
         }
         
     }
