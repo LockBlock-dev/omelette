@@ -60,7 +60,7 @@
     <ClInclude Include="cheat\features\lasers_level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\invincibility.h">
+    <ClInclude Include="cheat\features\shield.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -104,7 +104,7 @@
     <ClCompile Include="cheat\features\lasers_level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\invincibility.cpp">
+    <ClCompile Include="cheat\features\shield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

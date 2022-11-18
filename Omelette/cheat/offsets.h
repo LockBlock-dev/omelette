@@ -13,7 +13,7 @@ namespace offsets
 	inline std::vector<unsigned int> xCoordsOffsets = { 0x298, 0x38, 0x94 };
 	inline std::vector<unsigned int> yCoordsOffsets = { 0x298, 0x38, 0x98 };
 	inline std::vector<unsigned int> horizontalVelocity = { 0x298, 0x38, 0x9C };
-	inline std::vector<unsigned int> invincibilityTimeoutOffsets = { 0x298, 0x38, 0xBC };
+	inline std::vector<unsigned int> shieldTimeoutOffsets = { 0x298, 0x38, 0xBC };
 	inline std::vector<unsigned int> healthOffsets = { 0x298, 0x38, 0xC0 };
 	inline std::vector<unsigned int> lasersLevelOffsets = { 0x298, 0x38, 0xC4 };
 	inline std::vector<unsigned int> rocketsCountOffsets = { 0x298, 0x38, 0xC8 };

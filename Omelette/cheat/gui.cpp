@@ -259,5 +259,7 @@ void gui::Render() noexcept
 	ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
 	ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
 
+	ImGui::Checkbox("Shield", &settings::cheats.shield);
+
 	ImGui::End();
 }

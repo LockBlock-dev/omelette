@@ -6,7 +6,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 
 - Autoshot - shoot automatically
 - Lasers level - set any level of lasers (from 0 = 1 laser to 7 = 7 lasers)
-- Invincibility - you can't die
+- Shield - you can't die
 
 ## How to use
 

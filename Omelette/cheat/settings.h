@@ -12,7 +12,7 @@ namespace settings {
 		bool customLasersLevel = false;
 		int lasersLevel = 0;
 
-		bool invincibility = false;
-		int invincibilityTimeout = 100;
+		bool shield = false;
+		int shieldTimeout = 1000;
 	} cheats;
 }
