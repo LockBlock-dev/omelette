@@ -8,7 +8,7 @@ void Shield::run()
 {
     if (settings::cheats.shield)
     {
-        unsigned int* shieldTimeoutAddr = (unsigned int*)getPtrAddr(offsets::playerData, offsets::shieldTimeoutOffsets);
+        unsigned int* shieldTimeoutAddr = (unsigned int*)getPtrAddr(offsets::playerRed, offsets::shieldTimeoutOffsets);
 
         if (shieldTimeoutAddr > (unsigned int*)offsets::moduleBase) // Prevents crash when player dies (address is freed)
         {
