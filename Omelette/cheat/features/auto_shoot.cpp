@@ -55,7 +55,7 @@ void AutoShoot::run()
     }
     else if (!settings::cheats.autoShoot && AutoShootThreadHandle)
     {
-        TerminateThread(AutoShootThreadHandle, 0);
+        CloseHandle(AutoShootThreadHandle);
         AutoShootThreadHandle = {};
 
         safeExit();  // When disabling the autoShoot the key should be released

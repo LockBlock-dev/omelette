@@ -16,7 +16,7 @@ DWORD WINAPI GUIThread(LPVOID param)
     gui::CreateDevice();
     gui::CreateImGui();
 
-    while (true)
+    while (settings::cheats.showMenu)
     {
         gui::BeginRender();
         gui::Render();
@@ -33,7 +33,7 @@ DWORD WINAPI GUIThread(LPVOID param)
     return 0;
 }
 
-void cheat::start()
+void cheat::start(HMODULE instance)
 {
     HANDLE GUIThreadHandle{};
 
@@ -58,7 +58,6 @@ void cheat::start()
         }
         else if (!settings::cheats.showMenu && GUIThreadHandle)
         {
-            TerminateThread(GUIThreadHandle, 0);
             GUIThreadHandle = {};
         }
 
