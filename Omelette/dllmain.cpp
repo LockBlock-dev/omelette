@@ -4,7 +4,7 @@
 #include "./cheat/main.h"
 
 
-DWORD WINAPI MainThread(LPVOID param)
+DWORD WINAPI MainThread(HMODULE instance)
 {
     // FOR DEBUG PURPOSES
     AllocConsole();
@@ -16,9 +16,7 @@ DWORD WINAPI MainThread(LPVOID param)
     // END DEBUG
 
 
-    cheat::start();
-
-    FreeLibraryAndExitThread((HMODULE)param, 0);
+    cheat::start(instance);
 
     return 0;
 }
@@ -31,7 +29,9 @@ BOOL APIENTRY DllMain(
 {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH)
     {
-        CreateThread(NULL, 0, &MainThread, hModule, 0, 0);
+        DisableThreadLibraryCalls(hModule);
+
+        CreateThread(NULL, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(&MainThread), hModule, 0, 0);
     }
 
     return TRUE;

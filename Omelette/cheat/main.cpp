@@ -44,6 +44,14 @@ void cheat::start()
             settings::cheats.showMenu = !settings::cheats.showMenu;
         }
 
+        if (GetAsyncKeyState(VK_END) & 0x01)
+        {
+            settings::cheats.showMenu = false;
+
+            FreeLibraryAndExitThread(instance, 0);
+            // TODO: remove ImGui or the game crashes
+        }
+
         if (settings::cheats.showMenu && !GUIThreadHandle)
         {
             GUIThreadHandle = CreateThread(NULL, 0, &GUIThread, NULL, 0, 0);
