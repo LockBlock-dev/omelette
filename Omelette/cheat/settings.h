@@ -13,6 +13,6 @@ namespace settings {
 		int lasersLevel = 0;
 
 		bool shield = false;
-		int shieldTimeout = 1000;
+		int shieldTimeout = 100;
 	} cheats;
 }
