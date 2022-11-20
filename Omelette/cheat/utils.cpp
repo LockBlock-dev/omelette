@@ -5,7 +5,7 @@
 
 char gameName[17] = "Chicken Invaders";
 
-INPUT makeKey(int directInputCode, bool up)
+INPUT makeKey(int directInputCode, bool up) // https://stackoverflow.com/a/71629807
 {
     INPUT SHIFT;
 
