@@ -18,6 +18,8 @@ DWORD WINAPI MainThread(HMODULE instance)
 
     cheat::start(instance);
 
+    FreeConsole();
+
     return 0;
 }
 
