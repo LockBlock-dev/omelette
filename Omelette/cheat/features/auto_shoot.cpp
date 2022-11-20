@@ -1,5 +1,3 @@
-#include <dinput.h> // Keyboard mapping from DirectInput
-
 #include "auto_shoot.h"
 #include "../utils.h"
 #include "../settings.h"
@@ -7,13 +5,13 @@
 
 void safeExit()
 {
-    INPUT SHIFT_UP = makeKey(DIKEYBOARD_RSHIFT, true); // Failsafe: prevent the key to be hold down by Windows
+    INPUT SHIFT_UP = makeKey(settings::cheats.autoShootKey, true); // Failsafe: prevent the key to be hold down by Windows
     SendInput(1, &SHIFT_UP, sizeof(INPUT));
 }
 
 void autoShoot()
 {
-    INPUT SHIFT = makeKey(DIKEYBOARD_RSHIFT); // https://stackoverflow.com/a/71629807
+    INPUT SHIFT = makeKey(settings::cheats.autoShootKey); // https://stackoverflow.com/a/71629807
 
     SendInput(1, &SHIFT, sizeof(INPUT));
 

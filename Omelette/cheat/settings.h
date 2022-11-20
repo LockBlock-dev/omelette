@@ -7,6 +7,7 @@ namespace settings {
 		bool showMenu = false;
 
 		bool autoShoot = false;
+		int autoShootKey = DIKEYBOARD_RSHIFT;
 		int shootDelay = 100;
 
 		bool customLasersLevel = false;
