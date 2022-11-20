@@ -1,18 +1,19 @@
 #include "lasers_level.h"
 #include "../settings.h"
-#include "../utils.h"
-#include "../offsets.h"
+#include "../context.h"
+
 
 void LasersLevel::run()
 {
     if (settings::cheats.customLasersLevel)
     {       
-        unsigned int* laserLevelAddr = (unsigned int*)getPtrAddr(offsets::playerRed, offsets::lasersLevelOffsets);
+        PlayerData* playerData = context::playerData;
 
-        if (laserLevelAddr > (unsigned int*)offsets::moduleBase) // Prevents crash when player dies (address is freed)
-        { 
-            *laserLevelAddr = settings::cheats.lasersLevel;
+        int* addr = (int*)&playerData->lasersLevel;
+
+        if (addr > (int*)context::moduleBase) // Prevents crash when player dies (address is freed)
+        {
+            *addr = settings::cheats.lasersLevel;
         }
-        
     }
 }

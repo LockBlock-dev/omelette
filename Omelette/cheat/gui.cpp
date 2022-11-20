@@ -250,16 +250,44 @@ void gui::Render() noexcept
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoSavedSettings |
 		ImGuiWindowFlags_NoCollapse |
-		ImGuiWindowFlags_NoMove
+		ImGuiWindowFlags_NoMove |
+		ImGuiSliderFlags_AlwaysClamp
 	);
 
-	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
-	ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
+	if (ImGui::BeginTabBar("tabs"))
+	{
+		if (ImGui::BeginTabItem("Player Blue"))
+		{
+			settings::cheats.playerId = 0;
 
-	ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
-	ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
+			ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
+			ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
 
-	ImGui::Checkbox("Shield", &settings::cheats.shield);
+			ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
+			ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
+
+			ImGui::Checkbox("Shield", &settings::cheats.shield);
+
+			ImGui::EndTabItem();
+		}
+
+		if (ImGui::BeginTabItem("Player Red"))
+		{
+			settings::cheats.playerId = 1;
+
+			ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
+			ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
+
+			ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
+			ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
+
+			ImGui::Checkbox("Shield", &settings::cheats.shield);
+
+			ImGui::EndTabItem();
+		}
+
+		ImGui::EndTabBar();
+	}
 
 	ImGui::End();
 }

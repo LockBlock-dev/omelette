@@ -1,8 +1,10 @@
 #include <dinput.h> // Keyboard mapping from DirectInput
+#include <iostream>
 
 #include "main.h"
 #include "gui.h"
 #include "settings.h"
+#include "mem.h"
 
 #include "features/auto_shoot.h"
 #include "features/lasers_level.h"
@@ -60,6 +62,8 @@ void cheat::start(HMODULE instance)
         {
             GUIThreadHandle = {};
         }
+
+        context::playerData = (PlayerData*)memory::getAddress();
 
         AutoShoot::run();
         LasersLevel::run();

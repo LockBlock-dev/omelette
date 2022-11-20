@@ -54,13 +54,16 @@
     <ClInclude Include="cheat\utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\offsets.h">
+    <ClInclude Include="cheat\mem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cheat\features\lasers_level.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cheat\features\shield.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cheat\context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

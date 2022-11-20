@@ -1,18 +1,19 @@
 #include "shield.h"
 #include "../settings.h"
-#include "../utils.h"
-#include "../offsets.h"
+#include "../context.h"
 
 
 void Shield::run()
 {
     if (settings::cheats.shield)
     {
-        unsigned int* shieldTimeoutAddr = (unsigned int*)getPtrAddr(offsets::playerRed, offsets::shieldTimeoutOffsets);
+        PlayerData *playerData = context::playerData;
+        
+        int* addr = (int*)&playerData->shieldTimeout;
 
-        if (shieldTimeoutAddr > (unsigned int*)offsets::moduleBase) // Prevents crash when player dies (address is freed)
+        if (addr > (int*)context::moduleBase) // Prevents crash when player dies (address is freed)
         {
-            *shieldTimeoutAddr = settings::cheats.shieldTimeout;
+            *addr = settings::cheats.shieldTimeout;
         }
 
     }
