@@ -15,10 +15,7 @@ DWORD WINAPI MainThread(HMODULE instance)
     freopen_s(&fDummy, "CONOUT$", "w", stdout);
     // END DEBUG
 
-
     cheat::start(instance);
-
-    FreeConsole();
 
     return 0;
 }
