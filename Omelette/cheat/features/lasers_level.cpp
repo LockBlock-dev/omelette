@@ -7,7 +7,7 @@ void LasersLevel::run()
 {
     if (settings::cheats.customLasersLevel)
     {       
-        PlayerData* playerData = context::playerData;
+        PlayerData *playerData = context::playerData;
 
         int* addr = (int*)&playerData->lasersLevel;
 
