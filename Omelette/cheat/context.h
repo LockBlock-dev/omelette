@@ -32,14 +32,3 @@ namespace context {
 	inline GameInfo* gameInfo = nullptr;
 	inline PlayerData* playerData = nullptr;
 }
-
-/*
-inline std::vector<unsigned int> xCoordsOffsets = { 0x94 };
-inline std::vector<unsigned int> yCoordsOffsets = { 0x98 };
-inline std::vector<unsigned int> horizontalVelocity = { 0x9C };
-inline std::vector<unsigned int> shieldTimeoutOffsets = { 0xBC };
-inline std::vector<unsigned int> healthOffsets = { 0xC0 };
-inline std::vector<unsigned int> lasersLevelOffsets = { 0xC4 };
-inline std::vector<unsigned int> rocketsCountOffsets = { 0xC8 };
-inline std::vector<unsigned int> scoreOffsets = { 0xD4 };
-*/
