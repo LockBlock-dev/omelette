@@ -9,6 +9,7 @@
 #include "features/auto_shoot.h"
 #include "features/lasers_level.h"
 #include "features/shield.h"
+#include "features/in_game_cheats.h"
 
 
 DWORD WINAPI GUIThread(LPVOID param)
@@ -68,6 +69,7 @@ void cheat::start(HMODULE instance)
         AutoShoot::run();
         LasersLevel::run();
         Shield::run();
+        InGameCheats::run();
 
         //Sleep(100);
     }

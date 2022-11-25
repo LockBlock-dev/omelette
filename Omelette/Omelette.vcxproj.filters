@@ -66,6 +66,9 @@
     <ClInclude Include="cheat\context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="cheat\features\in_game_cheats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -108,6 +111,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cheat\features\shield.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cheat\features\in_game_cheats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

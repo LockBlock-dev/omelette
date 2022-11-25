@@ -1,5 +1,6 @@
 #pragma once
 #include <windows.h>
+#include <vector>
 
 
 #pragma pack(push, 1)
@@ -30,5 +31,6 @@ namespace context {
 	inline unsigned int baseOffset = 0x0005B1D0;
 
 	inline GameInfo* gameInfo = nullptr;
+	inline std::vector<unsigned int> inGameCheats = { 0x298, 0x64 };
 	inline PlayerData* playerData = nullptr;
 }

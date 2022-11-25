@@ -254,6 +254,8 @@ void gui::Render() noexcept
 		ImGuiSliderFlags_AlwaysClamp
 	);
 
+	ImGui::Checkbox("In Game cheats", &settings::cheats.inGameCheats); // F6: skip wave; F7: more weapons; F8: extra life
+
 	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
 	ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
 

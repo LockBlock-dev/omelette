@@ -145,6 +145,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cheat\context.h" />
+    <ClInclude Include="cheat\features\in_game_cheats.h" />
     <ClInclude Include="cheat\features\shield.h" />
     <ClInclude Include="cheat\features\lasers_level.h" />
     <ClInclude Include="cheat\mem.h" />
@@ -164,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cheat\features\auto_shoot.cpp" />
+    <ClCompile Include="cheat\features\in_game_cheats.cpp" />
     <ClCompile Include="cheat\features\shield.cpp" />
     <ClCompile Include="cheat\features\lasers_level.cpp" />
     <ClCompile Include="cheat\main.cpp" />
