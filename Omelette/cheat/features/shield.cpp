@@ -15,6 +15,5 @@ void Shield::run()
         {
             *addr = settings::cheats.shieldTimeout;
         }
-
     }
 }
