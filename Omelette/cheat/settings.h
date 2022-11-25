@@ -9,7 +9,7 @@ namespace settings {
 		int playerId = 0;
 
 		bool autoShoot = false;
-		int autoShootKey = DIKEYBOARD_RSHIFT;
+		int autoShootKey = DIKEYBOARD_RSHIFT; // Player Blue/Left: DIKEYBOARD_LSHIFT; Player Red/Right: DIKEYBOARD_RSHIFT;
 		int shootDelay = 100;
 
 		bool customLasersLevel = false;
