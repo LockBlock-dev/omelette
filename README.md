@@ -16,7 +16,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 
 ## How to use
 
-- Start the game.
+- Start the game: use [DxWnd](https://github.com/DxWnd/DxWnd.reloaded) to make the game windowed to avoid crashes and performance issues.
 - Open your favorite DLL injector.
 - Download the cheat from the [`Releases`](../../releases) or [build it](#compiling-from-source) yourself.
 - Inject `Omelette.dll` into the `ChickenInvaders.exe` process.
