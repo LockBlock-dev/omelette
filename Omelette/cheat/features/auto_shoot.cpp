@@ -1,6 +1,6 @@
 #include "auto_shoot.h"
-#include "../utils.h"
 #include "../settings.h"
+#include "../utils.h"
 
 
 void safeExit()
@@ -55,7 +55,7 @@ void AutoShoot::run()
     {
         CloseHandle(AutoShootThreadHandle);
         AutoShootThreadHandle = {};
-
+    
         safeExit();  // When disabling the autoShoot the key should be released
     }
 }
