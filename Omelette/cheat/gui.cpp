@@ -5,6 +5,7 @@
 #include "gui.h"
 #include "settings.h"
 #include "features/lives.h"
+#include "features/rockets.h"
 
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
@@ -270,6 +271,13 @@ void gui::Render() noexcept
 	if (ImGui::SmallButton("+1##lives"))
 	{
 		Lives::run();
+	}
+
+	ImGui::Text("Rockets:");
+	ImGui::SameLine();
+	if (ImGui::SmallButton("+1##rockets"))
+	{
+		Rockets::run();
 	}
 
 	ImGui::End();

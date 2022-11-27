@@ -11,7 +11,8 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
     - F8: +1 life
 - Lasers level - set any level of lasers (from 0 = 1 laser to 7 = 7 lasers)
 - Shield - you can't die
-- Lives - Add a life
+- Lives - add a life
+- Rockets - add a rocket
 
 ## How to use
 
