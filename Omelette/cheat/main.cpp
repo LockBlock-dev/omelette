@@ -1,5 +1,5 @@
+#define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h> // Keyboard mapping from DirectInput
-#include <iostream>
 
 #include "main.h"
 #include "gui.h"
@@ -71,6 +71,6 @@ void cheat::start(HMODULE instance)
         Shield::run();
         InGameCheats::run();
 
-        //Sleep(100);
+        Sleep(10);
     }
 }
