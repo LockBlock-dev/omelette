@@ -4,6 +4,7 @@
 
 #include "gui.h"
 #include "settings.h"
+#include "features/lives.h"
 
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
@@ -263,6 +264,13 @@ void gui::Render() noexcept
 	ImGui::SliderInt("Lasers level", &settings::cheats.lasersLevel, 0, 7, "lvl %d");
 
 	ImGui::Checkbox("Shield", &settings::cheats.shield);
+
+	ImGui::Text("Lives:");
+	ImGui::SameLine();
+	if (ImGui::SmallButton("+1##lives"))
+	{
+		Lives::run();
+	}
 
 	ImGui::End();
 }
