@@ -9,7 +9,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
     - F6: skip wave
     - F7: +1 laser lvl, +1 rocket
     - F8: +1 life
-- Lasers level - set any level of lasers (from 0 = 1 laser to 7 = 7 lasers)
+- Firepower - set any level of lasers (from 0 = 1 laser to 7 = 7 lasers)
 - Shield - you can't die
 - Lives - add a life
 - Rockets - add a rocket

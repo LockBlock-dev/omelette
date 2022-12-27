@@ -262,7 +262,7 @@ void gui::Render() noexcept
 	ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
 
 	ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
-	ImGui::SliderInt("Lasers level", &settings::cheats.firepower, 0, 7, "lvl %d");
+	ImGui::SliderInt("Firepower", &settings::cheats.firepower, 0, 7, "lvl %d");
 
 	ImGui::Checkbox("Shield", &settings::cheats.shield);
 
