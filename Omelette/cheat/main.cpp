@@ -10,6 +10,7 @@
 #include "features/firepower.h"
 #include "features/shield.h"
 #include "features/in_game_cheats.h"
+#include "features/debug_mode.h"
 
 
 DWORD WINAPI GUIThread(LPVOID param)
@@ -70,6 +71,7 @@ void cheat::start(HMODULE instance)
         Firepower::run();
         Shield::run();
         InGameCheats::run();
+        DebugMode::run();
 
         Sleep(10);
     }

@@ -32,5 +32,6 @@ namespace context {
 	inline unsigned int baseOffset = 0x5B1D0;
 
 	inline std::vector<unsigned int> inGameCheats = { 0x298, 0x64 };
+	inline std::vector<unsigned int> debugMode = { 0x4D0 };
 	inline PlayerData* playerData = nullptr;
 }

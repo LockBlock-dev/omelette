@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cheat\context.h" />
+    <ClInclude Include="cheat\features\debug_mode.h" />
     <ClInclude Include="cheat\features\in_game_cheats.h" />
     <ClInclude Include="cheat\features\lives.h" />
     <ClInclude Include="cheat\features\rockets.h" />
@@ -176,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cheat\features\auto_shoot.cpp" />
+    <ClCompile Include="cheat\features\debug_mode.cpp" />
     <ClCompile Include="cheat\features\in_game_cheats.cpp" />
     <ClCompile Include="cheat\features\lives.cpp" />
     <ClCompile Include="cheat\features\rockets.cpp" />
