@@ -1,6 +1,6 @@
 #pragma once
 
 
-namespace LasersLevel {
+namespace Firepower {
 	void run();
 }

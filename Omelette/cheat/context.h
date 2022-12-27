@@ -19,6 +19,7 @@ struct PlayerData {
 	int shieldTimeout;
 	int lives;
 	int lasersLevel; // 0 to 7
+	int firepower; // 0 to 7
 	int rocketsCount;
 	int consumedChickenLegs;
 	int scoreDisplay; // grows slowly

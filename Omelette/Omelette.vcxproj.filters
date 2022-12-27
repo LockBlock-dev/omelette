@@ -33,7 +33,7 @@
     <ClInclude Include="cheat\mem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\lasers_level.h">
+    <ClInclude Include="cheat\features\firepower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cheat\features\shield.h">
@@ -92,7 +92,7 @@
     <ClCompile Include="cheat\utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\lasers_level.cpp">
+    <ClCompile Include="cheat\features\firepower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cheat\features\shield.cpp">

@@ -7,7 +7,7 @@
 #include "mem.h"
 
 #include "features/auto_shoot.h"
-#include "features/lasers_level.h"
+#include "features/firepower.h"
 #include "features/shield.h"
 #include "features/in_game_cheats.h"
 
@@ -67,7 +67,7 @@ void cheat::start(HMODULE instance)
         context::playerData = (PlayerData*)memory::getAddress();
 
         AutoShoot::run();
-        LasersLevel::run();
+        Firepower::run();
         Shield::run();
         InGameCheats::run();
 

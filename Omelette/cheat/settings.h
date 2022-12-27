@@ -17,7 +17,7 @@ namespace settings {
 		int shootDelay = 100;
 
 		bool customLasersLevel = false;
-		int lasersLevel = 0;
+		int firepower = 0;
 
 		bool shield = false;
 		int shieldTimeout = 100;
