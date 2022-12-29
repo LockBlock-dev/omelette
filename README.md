@@ -33,7 +33,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 ## Credits
 
 [Dear imgui](https://github.com/ocornut/imgui) library  
-[Interactive Studio](https://www.interactionstudios.com/chickeninvaders.php) for this great game
+[Interaction Studios](https://www.interactionstudios.com/chickeninvaders.php) for this great game
 
 ## Copyright
 
