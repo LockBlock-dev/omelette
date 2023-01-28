@@ -257,6 +257,9 @@ void gui::Render() noexcept
 	);
 
 	ImGui::Checkbox("In Game cheats", &settings::cheats.inGameCheats); // F6: skip wave; F7: more weapons; F8: extra life
+
+	float checkboxHeight = ImGui::GetItemRectSize().y;
+
 	ImGui::Checkbox("Game debug mode", &settings::cheats.debugMode);
 
 	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
@@ -280,6 +283,12 @@ void gui::Render() noexcept
 	{
 		Rockets::run();
 	}
+
+	ImGui::SetCursorPos(ImVec2(
+			ImGui::GetWindowContentRegionMin().x,
+			ImGui::GetWindowContentRegionMax().y - checkboxHeight
+	));
+	ImGui::Checkbox("Cheat debug", &settings::cheats.debug);
 
 	ImGui::End();
 }

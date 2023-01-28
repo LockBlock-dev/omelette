@@ -1,23 +1,10 @@
 #include <windows.h>
 
 #include "./cheat/main.h"
-#include <iostream>
-
-#define DEBUG false
 
 
 DWORD WINAPI MainThread(HMODULE instance)
-{
-    if (DEBUG)
-    {
-        AllocConsole();
-
-        FILE* fDummy;
-
-        freopen_s(&fDummy, "CONOUT$", "w", stderr);
-        freopen_s(&fDummy, "CONOUT$", "w", stdout);
-    }
-
+{  
     cheat::start(instance);
 
     return 0;
