@@ -1,6 +1,7 @@
 #pragma once
 
 
-namespace DebugMode {
+class Rockets {
+public:
 	void run();
-}
+};

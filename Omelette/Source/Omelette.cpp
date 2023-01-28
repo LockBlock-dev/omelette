@@ -1,16 +1,12 @@
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h> // Keyboard mapping from DirectInput
+#include <optional>
 
-#include "main.h"
-#include "gui.h"
-#include "settings.h"
-#include "mem.h"
-
-#include "features/auto_shoot.h"
-#include "features/firepower.h"
-#include "features/shield.h"
-#include "features/in_game_cheats.h"
-#include "features/debug_mode.h"
+#include "Omelette.h"
+#include "GUI.h"
+#include "Settings.h"
+#include "Memory.h"
+#include "Features/Features.h"
 
 
 DWORD WINAPI GUIThread(LPVOID param)
@@ -40,6 +36,7 @@ DWORD WINAPI GUIThread(LPVOID param)
 void cheat::start(HMODULE instance)
 {
     HANDLE GUIThreadHandle{};
+    std::optional<Features> features = Features();
 
     while (true)
     {
@@ -77,11 +74,11 @@ void cheat::start(HMODULE instance)
 
         context::playerData = (PlayerData*)memory::getAddress();
 
-        AutoShoot::run();
-        Firepower::run();
-        Shield::run();
-        InGameCheats::run();
-        DebugMode::run();
+        features->autoshoot.run();
+        features->debugmode.run();
+        features->firepower.run();
+        features->ingamecheats.run();
+        features->shield.run();
 
         Sleep(10);
     }

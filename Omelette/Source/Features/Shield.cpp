@@ -1,5 +1,5 @@
-#include "shield.h"
-#include "../settings.h"
+#include "Shield.h"
+#include "../Settings.h"
 #include "../context.h"
 
 

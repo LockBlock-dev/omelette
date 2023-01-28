@@ -1,7 +1,7 @@
-#include "debug_mode.h"
-#include "../settings.h"
-#include "../context.h"
-#include "../utils.h"
+#include "DebugMode.h"
+#include "../Settings.h"
+#include "../Context.h"
+#include "../Utils.h"
 
 
 void DebugMode::run()

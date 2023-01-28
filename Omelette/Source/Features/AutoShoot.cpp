@@ -1,6 +1,6 @@
-#include "auto_shoot.h"
-#include "../settings.h"
-#include "../utils.h"
+#include "AutoShoot.h"
+#include "../Settings.h"
+#include "../Utils.h"
 
 
 void safeExit()

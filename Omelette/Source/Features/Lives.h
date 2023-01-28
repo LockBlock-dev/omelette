@@ -1,6 +1,7 @@
 #pragma once
 
 
-namespace Lives {
+class Lives {
+public:
 	void run();
-}
+};

@@ -15,40 +15,40 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cheat\gui.h">
+    <ClInclude Include="Source\GUI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\main.h">
+    <ClInclude Include="Source\Omelette.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\settings.h">
+    <ClInclude Include="Source\Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\auto_shoot.h">
+    <ClInclude Include="Source\Features\AutoShoot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\utils.h">
+    <ClInclude Include="Source\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\mem.h">
+    <ClInclude Include="Source\Memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\firepower.h">
+    <ClInclude Include="Source\Features\FirePower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\shield.h">
+    <ClInclude Include="Source\Features\Shield.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\context.h">
+    <ClInclude Include="Source\Context.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\in_game_cheats.h">
+    <ClInclude Include="Source\Features\InGameCheats.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\lives.h">
+    <ClInclude Include="Source\Features\Lives.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\rockets.h">
+    <ClInclude Include="Source\Features\Rockets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imgui\imgui.h">
@@ -75,7 +75,10 @@
     <ClInclude Include="imgui\imstb_rectpack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cheat\features\debug_mode.h">
+    <ClInclude Include="Source\Features\DebugMode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Features\Features.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -83,31 +86,31 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\gui.cpp">
+    <ClCompile Include="Source\GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\main.cpp">
+    <ClCompile Include="Source\Omelette.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\auto_shoot.cpp">
+    <ClCompile Include="Source\Features\AutoShoot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\utils.cpp">
+    <ClCompile Include="Source\Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\firepower.cpp">
+    <ClCompile Include="Source\Features\FirePower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\shield.cpp">
+    <ClCompile Include="Source\Features\Shield.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\in_game_cheats.cpp">
+    <ClCompile Include="Source\Features\InGameCheats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\lives.cpp">
+    <ClCompile Include="Source\Features\Lives.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\rockets.cpp">
+    <ClCompile Include="Source\Features\Rockets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui.cpp">
@@ -128,7 +131,7 @@
     <ClCompile Include="imgui\imgui_draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cheat\features\debug_mode.cpp">
+    <ClCompile Include="Source\Features\DebugMode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #include <windows.h>
 
-#include "./cheat/main.h"
+#include "./Source/Omelette.h"
 
 
 DWORD WINAPI MainThread(HMODULE instance)

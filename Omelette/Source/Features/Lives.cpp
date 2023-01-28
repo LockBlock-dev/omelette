@@ -1,12 +1,12 @@
-#include "rockets.h"
-#include "../context.h"
+#include "lives.h"
+#include "../Context.h"
 
 
-void Rockets::run()
+void Lives::run()
 {
     PlayerData *playerData = context::playerData;
         
-    int* addr = (int*)&playerData->rocketsCount;
+    int* addr = (int*)&playerData->lives;
 
     if (addr > (int*)context::moduleBase) // Prevents crash when player dies (address is freed)
     {

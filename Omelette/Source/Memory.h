@@ -1,6 +1,6 @@
 #pragma once
-#include "utils.h"
-#include "settings.h"
+#include "Utils.h"
+#include "Settings.h"
 #include "context.h"
 
 

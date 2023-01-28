@@ -1,12 +1,14 @@
 #include "imgui.h"
 #include "backends/imgui_impl_dx9.h"
 #include "backends/imgui_impl_win32.h"
+#include <optional>
 
-#include "gui.h"
-#include "settings.h"
-#include "features/lives.h"
-#include "features/rockets.h"
+#include "GUI.h"
+#include "Settings.h"
+#include "Features/Features.h"
 
+
+std::optional<Features> features = Features();
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
 	HWND window,
@@ -274,14 +276,14 @@ void gui::Render() noexcept
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##lives"))
 	{
-		Lives::run();
+		features->lives.run();
 	}
 
 	ImGui::Text("Rockets:");
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##rockets"))
 	{
-		Rockets::run();
+		features->rockets.run();
 	}
 
 	ImGui::SetCursorPos(ImVec2(

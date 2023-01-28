@@ -1,6 +1,7 @@
 #pragma once
 
 
-namespace Firepower {
+class Shield {
+public:
 	void run();
-}
+};

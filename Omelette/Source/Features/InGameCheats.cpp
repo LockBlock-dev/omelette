@@ -1,7 +1,7 @@
-#include "in_game_cheats.h"
-#include "../settings.h"
-#include "../context.h"
-#include "../utils.h"
+#include "InGameCheats.h"
+#include "../Settings.h"
+#include "../Context.h"
+#include "../Utils.h"
 
 
 void InGameCheats::run()

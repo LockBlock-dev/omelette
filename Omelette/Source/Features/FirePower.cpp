@@ -1,9 +1,9 @@
-#include "firepower.h"
-#include "../settings.h"
+#include "FirePower.h"
+#include "../Settings.h"
 #include "../context.h"
 
 
-void Firepower::run()
+void FirePower::run()
 {
     if (settings::cheats.customLasersLevel)
     {       

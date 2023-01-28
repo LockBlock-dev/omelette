@@ -153,19 +153,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="cheat\context.h" />
-    <ClInclude Include="cheat\features\debug_mode.h" />
-    <ClInclude Include="cheat\features\in_game_cheats.h" />
-    <ClInclude Include="cheat\features\lives.h" />
-    <ClInclude Include="cheat\features\rockets.h" />
-    <ClInclude Include="cheat\features\shield.h" />
-    <ClInclude Include="cheat\features\firepower.h" />
-    <ClInclude Include="cheat\mem.h" />
-    <ClInclude Include="cheat\features\auto_shoot.h" />
-    <ClInclude Include="cheat\gui.h" />
-    <ClInclude Include="cheat\main.h" />
-    <ClInclude Include="cheat\settings.h" />
-    <ClInclude Include="cheat\utils.h" />
+    <ClInclude Include="Source\Context.h" />
+    <ClInclude Include="Source\Features\DebugMode.h" />
+    <ClInclude Include="Source\Features\Features.h" />
+    <ClInclude Include="Source\Features\InGameCheats.h" />
+    <ClInclude Include="Source\Features\Lives.h" />
+    <ClInclude Include="Source\Features\Rockets.h" />
+    <ClInclude Include="Source\Features\Shield.h" />
+    <ClInclude Include="Source\Features\FirePower.h" />
+    <ClInclude Include="Source\Memory.h" />
+    <ClInclude Include="Source\Features\AutoShoot.h" />
+    <ClInclude Include="Source\GUI.h" />
+    <ClInclude Include="Source\Omelette.h" />
+    <ClInclude Include="Source\Settings.h" />
+    <ClInclude Include="Source\Utils.h" />
     <ClInclude Include="imgui\backends\imgui_impl_dx9.h" />
     <ClInclude Include="imgui\backends\imgui_impl_win32.h" />
     <ClInclude Include="imgui\imconfig.h" />
@@ -176,17 +177,17 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cheat\features\auto_shoot.cpp" />
-    <ClCompile Include="cheat\features\debug_mode.cpp" />
-    <ClCompile Include="cheat\features\in_game_cheats.cpp" />
-    <ClCompile Include="cheat\features\lives.cpp" />
-    <ClCompile Include="cheat\features\rockets.cpp" />
-    <ClCompile Include="cheat\features\shield.cpp" />
-    <ClCompile Include="cheat\features\firepower.cpp" />
-    <ClCompile Include="cheat\main.cpp" />
-    <ClCompile Include="cheat\utils.cpp" />
+    <ClCompile Include="Source\Features\AutoShoot.cpp" />
+    <ClCompile Include="Source\Features\DebugMode.cpp" />
+    <ClCompile Include="Source\Features\InGameCheats.cpp" />
+    <ClCompile Include="Source\Features\Lives.cpp" />
+    <ClCompile Include="Source\Features\Rockets.cpp" />
+    <ClCompile Include="Source\Features\Shield.cpp" />
+    <ClCompile Include="Source\Features\FirePower.cpp" />
+    <ClCompile Include="Source\Omelette.cpp" />
+    <ClCompile Include="Source\Utils.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="cheat\gui.cpp" />
+    <ClCompile Include="Source\GUI.cpp" />
     <ClCompile Include="imgui\backends\imgui_impl_dx9.cpp" />
     <ClCompile Include="imgui\backends\imgui_impl_win32.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
