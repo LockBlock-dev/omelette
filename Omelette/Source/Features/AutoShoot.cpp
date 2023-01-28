@@ -1,17 +1,16 @@
 #include "AutoShoot.h"
-#include "../Settings.h"
 #include "../Utils.h"
 
 
-void safeExit()
+void safeExit(Settings* settings)
 {
-    INPUT SHIFT_UP = makeKey(settings::cheats.autoShootKey, true); // Failsafe: prevent the key to be hold down by Windows
+    INPUT SHIFT_UP = makeKey(settings->autoShootKey, true); // Failsafe: prevent the key to be hold down by Windows
     SendInput(1, &SHIFT_UP, sizeof(INPUT));
 }
 
-void autoShoot()
+void autoShoot(Settings* settings)
 {
-    INPUT SHIFT = makeKey(settings::cheats.autoShootKey); // https://stackoverflow.com/a/71629807
+    INPUT SHIFT = makeKey(settings->autoShootKey); // https://stackoverflow.com/a/71629807
 
     SendInput(1, &SHIFT, sizeof(INPUT));
 
@@ -24,38 +23,38 @@ void autoShoot()
 
 DWORD WINAPI AutoShootThread(LPVOID param)
 {
-    while (true)
+    Settings* settings = (Settings*)param;
+
+    while (settings->autoShoot)
     {
         bool hasFocus = isFocused();
 
-        if (settings::cheats.autoShoot && hasFocus)
+        if (settings->autoShoot && hasFocus)
         {
-            autoShoot();
+            autoShoot(settings);
         }
         else if (!hasFocus)
         {
-            safeExit(); // When the focus is lost the key should be released
+            safeExit(settings); // When the focus is lost the key should be released
         }
 
-        Sleep(settings::cheats.shootDelay);
+        Sleep(settings->autoShootDelay);
     }
 
     return 0;
 }
 
-HANDLE AutoShootThreadHandle{};
-
-void AutoShoot::run()
+void AutoShoot::run(Settings* settings)
 {
-    if (settings::cheats.autoShoot && !AutoShootThreadHandle)
+    if (settings->autoShoot && !this->AutoShootThreadHandle)
     {
-        AutoShootThreadHandle = CreateThread(NULL, 0, &AutoShootThread, NULL, 0, 0);
+        this->AutoShootThreadHandle = CreateThread(NULL, 0, &AutoShootThread, settings, 0, 0);
     }
-    else if (!settings::cheats.autoShoot && AutoShootThreadHandle)
+    else if (!settings->autoShoot && this->AutoShootThreadHandle)
     {
-        CloseHandle(AutoShootThreadHandle);
-        AutoShootThreadHandle = {};
+        CloseHandle(this->AutoShootThreadHandle);
+        this->AutoShootThreadHandle = {};
     
-        safeExit();  // When disabling the autoShoot the key should be released
+        safeExit(settings);  // When disabling the autoShoot the key should be released
     }
 }

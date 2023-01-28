@@ -1,7 +1,10 @@
 #pragma once
 
+#include "../Settings.h"
+
 
 class AutoShoot {
 public:
-	void run();
+    HANDLE AutoShootThreadHandle{};
+    void run(Settings* settings);
 };

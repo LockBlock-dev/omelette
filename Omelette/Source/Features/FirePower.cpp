@@ -1,19 +1,18 @@
 #include "FirePower.h"
-#include "../Settings.h"
 #include "../context.h"
 
 
-void FirePower::run()
+void FirePower::run(Settings* settings)
 {
-    if (settings::cheats.customLasersLevel)
+    if (settings->customLasersLevel)
     {       
-        PlayerData *playerData = context::playerData;
+        PlayerData *playerData = Context::playerData;
 
         int* addr = (int*)&playerData->firepower;
 
-        if (addr > (int*)context::moduleBase) // Prevents crash when player dies (address is freed)
+        if (addr > (int*)Context::moduleBase) // Prevents crash when player dies (address is freed)
         {
-            *addr = settings::cheats.firepower;
+            *addr = settings->firepower;
         }
     }
 }

@@ -1,8 +1,23 @@
 #pragma once
 #include <d3d9.h>
+#include <iostream>
+#include "imgui.h"
+#include "backends/imgui_impl_dx9.h"
+#include "backends/imgui_impl_win32.h"
+
+#include "Settings.h"
 
 
-namespace gui
+// namespace ImGui {
+
+// 	bool FeatureCheckbox(const char* label, bool* v) {
+// 		std::cout << "ImGui::Checkbox called with label '" << label << "'" << std::endl;
+// 		return Checkbox(label, v);
+// 	}
+
+// }
+
+namespace GUI
 {
 	// constant window size
 	constexpr int WIDTH = 500;
@@ -37,7 +52,7 @@ namespace gui
 	void CreateImGui() noexcept;
 	void DestroyImGui() noexcept;
 
-	void BeginRender() noexcept;
+	void BeginRender(Settings* settings) noexcept;
 	void EndRender() noexcept;
-	void Render() noexcept;
+	void Render(Settings* settings) noexcept;
 }

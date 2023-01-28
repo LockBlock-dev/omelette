@@ -1,6 +1,5 @@
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h> // Keyboard mapping from DirectInput
-#include <optional>
 
 #include "Omelette.h"
 #include "GUI.h"
@@ -11,24 +10,26 @@
 
 DWORD WINAPI GUIThread(LPVOID param)
 {
-    // Create GUI
-    gui::CreateHWindow(L"Omelette");
-    gui::CreateDevice();
-    gui::CreateImGui();
+    Settings* settings = (Settings*)param;
 
-    while (settings::cheats.showMenu)
+    // Create GUI
+    GUI::CreateHWindow(L"Omelette");
+    GUI::CreateDevice();
+    GUI::CreateImGui();
+
+    while (settings->showMenu)
     {
-        gui::BeginRender();
-        gui::Render();
-        gui::EndRender();
+        GUI::BeginRender(settings);
+        GUI::Render(settings);
+        GUI::EndRender();
 
         Sleep(10);
     }
 
     // Destroy GUI
-    gui::DestroyImGui();
-    gui::DestroyDevice();
-    gui::DestroyHWindow();
+    GUI::DestroyImGui();
+    GUI::DestroyDevice();
+    GUI::DestroyHWindow();
 
     return 0;
 }
@@ -36,33 +37,35 @@ DWORD WINAPI GUIThread(LPVOID param)
 void cheat::start(HMODULE instance)
 {
     HANDLE GUIThreadHandle{};
-    std::optional<Features> features = Features();
+    Features features = Features();
+    Settings settings;
 
     while (true)
     {
         if (GetAsyncKeyState(VK_INSERT) & 0x01)
         {
-            settings::cheats.showMenu = !settings::cheats.showMenu;
+            settings.showMenu = !settings.showMenu;
         }
 
         if (GetAsyncKeyState(VK_END) & 0x01)
         {
-            settings::cheats.showMenu = false;
+            settings.showMenu = false;
 
             FreeLibraryAndExitThread(instance, 0);
-            // TODO: remove ImGui or the game crashes
+            // TODO: remove ImGui if it not closed or the game crashes
         }
 
-        if (settings::cheats.showMenu && !GUIThreadHandle)
+        if (settings.showMenu && !GUIThreadHandle)
         {
-            GUIThreadHandle = CreateThread(NULL, 0, &GUIThread, NULL, 0, 0);
+            GUIThreadHandle = CreateThread(NULL, 0, &GUIThread, &settings, 0, 0);
         }
-        else if (!settings::cheats.showMenu && GUIThreadHandle)
+        else if (!settings.showMenu && GUIThreadHandle)
         {
+            CloseHandle(GUIThread);
             GUIThreadHandle = {};
         }
 
-        if(settings::cheats.debug)
+        if(settings.debug)
         {
             AllocConsole();
 
@@ -72,13 +75,13 @@ void cheat::start(HMODULE instance)
             freopen_s(&fDummy, "CONOUT$", "w", stdout);
         }
 
-        context::playerData = (PlayerData*)memory::getAddress();
+        Context::playerData = (PlayerData*)memory::getAddress(settings.playerId);
 
-        features->autoshoot.run();
-        features->debugmode.run();
-        features->firepower.run();
-        features->ingamecheats.run();
-        features->shield.run();
+        features.autoshoot.run(&settings);
+        features.debugmode.run(&settings);
+        features.firepower.run(&settings);
+        features.ingamecheats.run(&settings);
+        features.shield.run(&settings);
 
         Sleep(10);
     }

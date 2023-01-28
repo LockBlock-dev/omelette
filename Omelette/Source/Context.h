@@ -51,7 +51,7 @@ struct ChickenData {
 };
 #pragma pack(pop)
 
-namespace context {
+namespace Context {
 	inline uintptr_t moduleBase = (uintptr_t)GetModuleHandle(NULL);
 	inline unsigned int baseOffset = 0x5B1D0;
 

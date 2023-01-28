@@ -1,7 +1,9 @@
 #pragma once
 
+#include "../Settings.h"
+
 
 class InGameCheats {
 public:
-	void run();
+    void run(Settings* settings);
 };

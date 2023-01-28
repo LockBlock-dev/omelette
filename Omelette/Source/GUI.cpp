@@ -1,6 +1,3 @@
-#include "imgui.h"
-#include "backends/imgui_impl_dx9.h"
-#include "backends/imgui_impl_win32.h"
 #include <optional>
 
 #include "GUI.h"
@@ -8,7 +5,7 @@
 #include "Features/Features.h"
 
 
-std::optional<Features> features = Features();
+Features features = Features();
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
 	HWND window,
@@ -29,11 +26,11 @@ long __stdcall WindowProcess(
 	switch (message)
 	{
 	case WM_SIZE: {
-		if (gui::device && wideParameter != SIZE_MINIMIZED)
+		if (GUI::device && wideParameter != SIZE_MINIMIZED)
 		{
-			gui::presentParameters.BackBufferWidth = LOWORD(longParameter);
-			gui::presentParameters.BackBufferHeight = HIWORD(longParameter);
-			gui::ResetDevice();
+			GUI::presentParameters.BackBufferWidth = LOWORD(longParameter);
+			GUI::presentParameters.BackBufferHeight = HIWORD(longParameter);
+			GUI::ResetDevice();
 		}
 	}return 0;
 
@@ -47,7 +44,7 @@ long __stdcall WindowProcess(
 	}return 0;
 
 	case WM_LBUTTONDOWN: {
-		gui::position = MAKEPOINTS(longParameter); // set click points
+		GUI::position = MAKEPOINTS(longParameter); // set click points
 	}return 0;
 
 	case WM_MOUSEMOVE: {
@@ -56,16 +53,16 @@ long __stdcall WindowProcess(
 			const auto points = MAKEPOINTS(longParameter);
 			auto rect = ::RECT{ };
 
-			GetWindowRect(gui::window, &rect);
+			GetWindowRect(GUI::window, &rect);
 
-			rect.left += points.x - gui::position.x;
-			rect.top += points.y - gui::position.y;
+			rect.left += points.x - GUI::position.x;
+			rect.top += points.y - GUI::position.y;
 
-			if (gui::position.x >= 0 &&
-				gui::position.x <= gui::WIDTH &&
-				gui::position.y >= 0 && gui::position.y <= 19)
+			if (GUI::position.x >= 0 &&
+				GUI::position.x <= GUI::WIDTH &&
+				GUI::position.y >= 0 && GUI::position.y <= 19)
 				SetWindowPos(
-					gui::window,
+					GUI::window,
 					HWND_TOPMOST,
 					rect.left,
 					rect.top,
@@ -81,7 +78,7 @@ long __stdcall WindowProcess(
 	return DefWindowProc(window, message, wideParameter, longParameter);
 }
 
-void gui::CreateHWindow(LPCWSTR windowName) noexcept
+void GUI::CreateHWindow(LPCWSTR windowName) noexcept
 {
 	windowClass.cbSize = sizeof(WNDCLASSEX);
 	windowClass.style = CS_CLASSDC;
@@ -117,13 +114,13 @@ void gui::CreateHWindow(LPCWSTR windowName) noexcept
 	UpdateWindow(window);
 }
 
-void gui::DestroyHWindow() noexcept
+void GUI::DestroyHWindow() noexcept
 {
 	DestroyWindow(window);
 	UnregisterClass(windowClass.lpszClassName, windowClass.hInstance);
 }
 
-bool gui::CreateDevice() noexcept
+bool GUI::CreateDevice() noexcept
 {
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
 
@@ -151,7 +148,7 @@ bool gui::CreateDevice() noexcept
 	return true;
 }
 
-void gui::ResetDevice() noexcept
+void GUI::ResetDevice() noexcept
 {
 	ImGui_ImplDX9_InvalidateDeviceObjects();
 
@@ -163,7 +160,7 @@ void gui::ResetDevice() noexcept
 	ImGui_ImplDX9_CreateDeviceObjects();
 }
 
-void gui::DestroyDevice() noexcept
+void GUI::DestroyDevice() noexcept
 {
 	if (device)
 	{
@@ -178,7 +175,7 @@ void gui::DestroyDevice() noexcept
 	}
 }
 
-void gui::CreateImGui() noexcept
+void GUI::CreateImGui() noexcept
 {
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -192,14 +189,14 @@ void gui::CreateImGui() noexcept
 	ImGui_ImplDX9_Init(device);
 }
 
-void gui::DestroyImGui() noexcept
+void GUI::DestroyImGui() noexcept
 {
 	ImGui_ImplDX9_Shutdown();
 	ImGui_ImplWin32_Shutdown();
 	ImGui::DestroyContext();
 }
 
-void gui::BeginRender() noexcept
+void GUI::BeginRender(Settings* settings) noexcept
 {
 	MSG message;
 	while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
@@ -209,7 +206,7 @@ void gui::BeginRender() noexcept
 
 		if (message.message == WM_QUIT)
 		{
-			settings::cheats.showMenu = !settings::cheats.showMenu;
+			settings->showMenu = !settings->showMenu;
 			return;
 		}
 	}
@@ -220,7 +217,7 @@ void gui::BeginRender() noexcept
 	ImGui::NewFrame();
 }
 
-void gui::EndRender() noexcept
+void GUI::EndRender() noexcept
 {
 	ImGui::EndFrame();
 
@@ -244,13 +241,13 @@ void gui::EndRender() noexcept
 		ResetDevice();
 }
 
-void gui::Render() noexcept
+void GUI::Render(Settings* settings) noexcept
 {
 	ImGui::SetNextWindowPos({ 0, 0 });
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
 		"Omelette",
-		&settings::cheats.showMenu,
+		&settings->showMenu,
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoSavedSettings |
 		ImGuiWindowFlags_NoCollapse |
@@ -258,39 +255,39 @@ void gui::Render() noexcept
 		ImGuiSliderFlags_AlwaysClamp
 	);
 
-	ImGui::Checkbox("In Game cheats", &settings::cheats.inGameCheats); // F6: skip wave; F7: more weapons; F8: extra life
+	ImGui::Checkbox("In Game cheats", &settings->inGameCheats); // F6: skip wave; F7: more weapons; F8: extra life
 
 	float checkboxHeight = ImGui::GetItemRectSize().y;
 
-	ImGui::Checkbox("Game debug mode", &settings::cheats.debugMode);
+	ImGui::Checkbox("Game debug mode", &settings->debugMode);
 
-	ImGui::Checkbox("Auto shoot", &settings::cheats.autoShoot);
-	ImGui::SliderInt("Auto shoot speed", &settings::cheats.shootDelay, 1, 1000, "%d ms");
+	ImGui::Checkbox("Auto shoot", &settings->autoShoot);
+	ImGui::SliderInt("Auto shoot speed", &settings->autoShootDelay, 1, 1000, "%d ms");
 
-	ImGui::Checkbox("Custom lasers level", &settings::cheats.customLasersLevel);
-	ImGui::SliderInt("Firepower", &settings::cheats.firepower, 0, 7, "lvl %d");
+	ImGui::Checkbox("Custom lasers level", &settings->customLasersLevel);
+	ImGui::SliderInt("Firepower", &settings->firepower, 0, 7, "lvl %d");
 
-	ImGui::Checkbox("Shield", &settings::cheats.shield);
+	ImGui::Checkbox("Shield", &settings->shield);
 
 	ImGui::Text("Lives:");
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##lives"))
 	{
-		features->lives.run();
+		features.lives.run();
 	}
 
 	ImGui::Text("Rockets:");
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##rockets"))
 	{
-		features->rockets.run();
+		features.rockets.run();
 	}
 
 	ImGui::SetCursorPos(ImVec2(
 			ImGui::GetWindowContentRegionMin().x,
 			ImGui::GetWindowContentRegionMax().y - checkboxHeight
 	));
-	ImGui::Checkbox("Cheat debug", &settings::cheats.debug);
+	ImGui::Checkbox("Cheat debug", &settings->debug);
 
 	ImGui::End();
 }

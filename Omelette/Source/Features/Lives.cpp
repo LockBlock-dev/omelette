@@ -4,11 +4,11 @@
 
 void Lives::run()
 {
-    PlayerData *playerData = context::playerData;
+    PlayerData *playerData = Context::playerData;
         
     int* addr = (int*)&playerData->lives;
 
-    if (addr > (int*)context::moduleBase) // Prevents crash when player dies (address is freed)
+    if (addr > (int*)Context::moduleBase) // Prevents crash when player dies (address is freed)
     {
         *addr += 1;
     }

@@ -1,20 +1,19 @@
 #pragma once
 #include "Utils.h"
-#include "Settings.h"
-#include "context.h"
+#include "Context.h"
 
 
 namespace memory
 {
-	uintptr_t getAddress() {
-		if (settings::cheats.playerId == 0)
+	uintptr_t getAddress(int playerId) {
+		if (playerId == 0)
 		{
 			// Player Blue/Left
-			return getPtrAddr(context::moduleBase + context::baseOffset, { 0x298, 0x34, 0 });
+			return getPtrAddr(Context::moduleBase + Context::baseOffset, { 0x298, 0x34, 0 });
 		}
-		else {
+		else if (playerId == 1) {
 			// Player Red/Right
-			return getPtrAddr(context::moduleBase + context::baseOffset, { 0x298, 0x38, 0 });
+			return getPtrAddr(Context::moduleBase + Context::baseOffset, { 0x298, 0x38, 0 });
 		}
 	}
 }
