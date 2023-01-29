@@ -5,6 +5,8 @@
 
 class AutoShoot {
 public:
-    HANDLE AutoShootThreadHandle{};
     void run(Settings* settings);
+private:
+    HANDLE AutoShootThreadHandle{};
+    std::string name = "AutoShoot";
 };
