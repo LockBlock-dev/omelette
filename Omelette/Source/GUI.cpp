@@ -262,10 +262,14 @@ void GUI::Render(Settings* settings) noexcept
 	ImGui::Checkbox("Game debug mode", &settings->debugMode);
 
 	ImGui::Checkbox("Auto shoot", &settings->autoShoot);
+	ImGui::BeginDisabled(!settings->autoShoot);
 	ImGui::SliderInt("Auto shoot speed", &settings->autoShootDelay, 1, 1000, "%d ms");
+	ImGui::EndDisabled();
 
 	ImGui::Checkbox("Custom lasers level", &settings->customFirepower);
+	ImGui::BeginDisabled(!settings->customFirepower);
 	ImGui::SliderInt("Firepower", &settings->firepower, 0, 7, "lvl %d");
+	ImGui::EndDisabled();
 
 	ImGui::Checkbox("Shield", &settings->shield);
 
