@@ -1,21 +1,8 @@
 #pragma once
 #include <d3d9.h>
-#include <iostream>
-#include "imgui.h"
-#include "backends/imgui_impl_dx9.h"
-#include "backends/imgui_impl_win32.h"
 
 #include "Settings.h"
 
-
-// namespace ImGui {
-
-// 	bool FeatureCheckbox(const char* label, bool* v) {
-// 		std::cout << "ImGui::Checkbox called with label '" << label << "'" << std::endl;
-// 		return Checkbox(label, v);
-// 	}
-
-// }
 
 namespace GUI
 {
