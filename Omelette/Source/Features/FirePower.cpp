@@ -1,10 +1,10 @@
 #include "FirePower.h"
-#include "../context.h"
+#include "../Context.h"
 
 
 void FirePower::run(Settings* settings)
 {
-    if (settings->customLasersLevel)
+    if (settings->customFirepower)
     {       
         PlayerData *playerData = Context::playerData;
 

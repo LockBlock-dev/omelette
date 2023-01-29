@@ -264,7 +264,7 @@ void GUI::Render(Settings* settings) noexcept
 	ImGui::Checkbox("Auto shoot", &settings->autoShoot);
 	ImGui::SliderInt("Auto shoot speed", &settings->autoShootDelay, 1, 1000, "%d ms");
 
-	ImGui::Checkbox("Custom lasers level", &settings->customLasersLevel);
+	ImGui::Checkbox("Custom lasers level", &settings->customFirepower);
 	ImGui::SliderInt("Firepower", &settings->firepower, 0, 7, "lvl %d");
 
 	ImGui::Checkbox("Shield", &settings->shield);
