@@ -303,6 +303,11 @@ void GUI::Render(Settings* settings) noexcept
 			ImGui::GetWindowContentRegionMax().y - checkboxHeight
 	));
 
+	// Github link
+	if (ImGui::Button("Github link")) {
+		ShellExecute(NULL, L"open", L"https://github.com/LockBlock-dev/omelette", NULL, NULL, SW_SHOWNORMAL);
+
+	}
 
 	ImGui::End();
 }
