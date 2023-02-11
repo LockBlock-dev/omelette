@@ -65,16 +65,6 @@ void cheat::start(HMODULE instance)
             GUIThreadHandle = {};
         }
 
-        if(settings.debug)
-        {
-            AllocConsole();
-
-            FILE* fDummy;
-
-            freopen_s(&fDummy, "CONOUT$", "w", stderr);
-            freopen_s(&fDummy, "CONOUT$", "w", stdout);
-        }
-
         Context::playerData = (PlayerData*)memory::getAddress(settings.playerId);
 
         features.autoshoot.run(&settings);

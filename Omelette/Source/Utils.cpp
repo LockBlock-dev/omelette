@@ -46,22 +46,3 @@ uintptr_t getPtrAddr(uintptr_t ptr, std::vector<uintptr_t> offsets)
     }
     return addr;
 }
-
-void logStateBool(std::string label, bool* val, bool* oldVal)
-{
-    if (*oldVal != *val)
-    {
-        *oldVal = *val;
-        std::cout << "[" << label << "] set to: " << (*val ? "enabled" : "disabled") << std::endl;;
-    }
-}
-
-void logStateInt(std::string label, int val)
-{
-    std::cout << "[" << label << "] set to: " << val << std::endl;
-}
-
-void logStateFloat(std::string label, float val)
-{
-    std::cout << "[" << label << "] set to: " << val << std::endl;
-}

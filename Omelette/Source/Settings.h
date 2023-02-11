@@ -7,7 +7,6 @@
 class Settings {
 public:
 	bool showMenu = false;
-	bool debug = false;
 
 	int playerId = 1; // Player Blue/Left: 0; Player Red/Right: 1;
 

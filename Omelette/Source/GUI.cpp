@@ -1,5 +1,4 @@
 #include <optional>
-#include <iostream>
 #include "imgui.h"
 #include "backends/imgui_impl_dx9.h"
 #include "backends/imgui_impl_win32.h"
@@ -7,7 +6,6 @@
 #include "GUI.h"
 #include "Settings.h"
 #include "Features/Features.h"
-#include "Utils.h"
 
 
 Features features = Features();
@@ -261,37 +259,27 @@ void GUI::Render(Settings* settings) noexcept
 	);
 
 	// In-Game cheats
-	bool inGameCheatsOld = settings->inGameCheats;
 	ImGui::Checkbox("In-Game cheats", &settings->inGameCheats); // F6: skip wave; F7: more weapons; F8: extra life
-	logStateBool("In-Game cheats", &settings->inGameCheats, &inGameCheatsOld);
 
 	float checkboxHeight = ImGui::GetItemRectSize().y;
 
 	// Game debug mode
-	bool debugModeOld = settings->debugMode;
 	ImGui::Checkbox("Game debug info", &settings->debugMode);
-	logStateBool("Game debug info", &settings->debugMode, &debugModeOld);
 
 	// Auto shoot
-	bool autoShootOld = settings->autoShoot;
 	ImGui::Checkbox("Auto shoot", &settings->autoShoot);
 	ImGui::BeginDisabled(!settings->autoShoot);
-	ImGui::SliderInt("Auto shoot speed", &settings->autoShootDelay, 1, 1000, "%d ms");
+	ImGui::SliderInt("speed", &settings->autoShootDelay, 1, 1000, "%d ms");
 	ImGui::EndDisabled();
-	logStateBool("Auto shoot", &settings->autoShoot, &autoShootOld);
 
 	// Firepower
-	bool customFirepowerOld = settings->customFirepower;
 	ImGui::Checkbox("Custom firepower", &settings->customFirepower);
 	ImGui::BeginDisabled(!settings->customFirepower);
-	ImGui::SliderInt("Firepower", &settings->firepower, 0, 7, "lvl %d");
+	ImGui::SliderInt("firepower", &settings->firepower, 0, 7, "lvl %d");
 	ImGui::EndDisabled();
-	logStateBool("Custom firepower", &settings->customFirepower, &customFirepowerOld);
 
 	// Shield
-	bool shieldOld = settings->shield;
 	ImGui::Checkbox("Shield", &settings->shield);
-	logStateBool("Shield", &settings->shield, &shieldOld);
 
 	// Lives
 	ImGui::Text("Lives:");
@@ -315,10 +303,6 @@ void GUI::Render(Settings* settings) noexcept
 			ImGui::GetWindowContentRegionMax().y - checkboxHeight
 	));
 
-	// Cheat debug logs
-	bool debugOld = settings->debug;
-	ImGui::Checkbox("Cheat debug logs", &settings->debug);
-	logStateBool("Cheat debug logs", &settings->debug, &debugOld);
 
 	ImGui::End();
 }
