@@ -22,6 +22,7 @@ An open-source internal (DLL) cheat for the [Chicken Invaders](https://www.inter
 - Open your favorite DLL injector.
 - Inject `Omelette.dll` into the `ChickenInvaders.exe` process.
 - Open the menu by pressing the <kbd>INSERT</kbd> key.
+- Release the menu by pressing the <kbd>END</kbd> key.
 
 ## Compiling from source
 
