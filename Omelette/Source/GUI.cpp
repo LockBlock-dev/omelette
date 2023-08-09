@@ -7,9 +7,6 @@
 #include "Settings.h"
 #include "Features/Features.h"
 
-
-Features features = Features();
-
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(
 	HWND window,
 	UINT message,
@@ -246,6 +243,8 @@ void GUI::EndRender() noexcept
 
 void GUI::Render(Settings* settings) noexcept
 {
+	FeaturesManager& featuresManager = FeaturesManager::getInstance();
+
 	ImGui::SetNextWindowPos({ 0, 0 });
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
@@ -268,9 +267,6 @@ void GUI::Render(Settings* settings) noexcept
 
 	// Auto shoot
 	ImGui::Checkbox("Auto shoot", &settings->autoShoot);
-	ImGui::BeginDisabled(!settings->autoShoot);
-	ImGui::SliderInt("speed", &settings->autoShootDelay, 1, 1000, "%d ms");
-	ImGui::EndDisabled();
 
 	// Firepower
 	ImGui::Checkbox("Custom firepower", &settings->customFirepower);
@@ -286,7 +282,7 @@ void GUI::Render(Settings* settings) noexcept
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##lives"))
 	{
-		features.lives.run();
+		featuresManager.lives.run();
 	}
 
 	// Rockets
@@ -294,7 +290,7 @@ void GUI::Render(Settings* settings) noexcept
 	ImGui::SameLine();
 	if (ImGui::SmallButton("+1##rockets"))
 	{
-		features.rockets.run();
+		featuresManager.rockets.run();
 	}
 
 	// Bottom positioning

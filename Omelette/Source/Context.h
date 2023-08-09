@@ -5,7 +5,9 @@
 
 #pragma pack(push, 1)
 struct PlayerData {
-	char _unk1[36]; // unknown
+	char _unk[12]; // unknown
+	int dwordC;
+	char _unk1[20];
 	double size; // spaceship size default to 1
 	int _unk3;
 	int axis; // 0 = default, 2 mirrored vertical, 4 = mirrored horizontal
@@ -27,6 +29,7 @@ struct PlayerData {
 	int consumedChickenLegs;
 	int scoreDisplay; // grows slowly
 	int score; // instant
+	char shotPreviousFrame;
 };
 #pragma pack(pop)
 
@@ -55,7 +58,7 @@ namespace Context {
 	inline uintptr_t moduleBase = (uintptr_t)GetModuleHandle(NULL);
 	inline unsigned int baseOffset = 0x5B1D0;
 
-	inline std::vector<unsigned int> inGameCheats = { 0x298, 0x64 };
-	inline std::vector<unsigned int> debugMode = { 0x4D0 };
+	inline std::vector<unsigned int> inGameCheats = { 0x298, 0x65 };
+	inline std::vector<unsigned int> debugMode = { 0x298, 0xC, 0x44 };
 	inline PlayerData* playerData = nullptr;
 }

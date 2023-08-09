@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>./Dependencies/imgui;./Dependencies/imgui/backends;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Dependencies/imgui;./Dependencies/imgui/backends;./Dependencies/minhook/src;./Dependencies/minhook/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>
       </AdditionalUsingDirectories>
       <AdditionalBMIDirectories>
@@ -113,8 +113,8 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>Dependencies/imgui;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d9.lib;dinput.lib;dxguid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -154,6 +154,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Dependencies\minhook\include\MinHook.h" />
+    <ClInclude Include="Dependencies\minhook\MinHook.h" />
+    <ClInclude Include="Dependencies\minhook\src\buffer.h" />
+    <ClInclude Include="Dependencies\minhook\src\hde\hde32.h" />
+    <ClInclude Include="Dependencies\minhook\src\hde\hde64.h" />
+    <ClInclude Include="Dependencies\minhook\src\hde\pstdint.h" />
+    <ClInclude Include="Dependencies\minhook\src\hde\table32.h" />
+    <ClInclude Include="Dependencies\minhook\src\hde\table64.h" />
+    <ClInclude Include="Dependencies\minhook\src\trampoline.h" />
     <ClInclude Include="Source\Context.h" />
     <ClInclude Include="Source\Features\DebugMode.h" />
     <ClInclude Include="Source\Features\Features.h" />
@@ -178,14 +187,21 @@
     <ClInclude Include="Dependencies\imgui\imstb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Dependencies\minhook\src\buffer.c" />
+    <ClCompile Include="Dependencies\minhook\src\hde\hde32.c" />
+    <ClCompile Include="Dependencies\minhook\src\hde\hde64.c" />
+    <ClCompile Include="Dependencies\minhook\src\hook.c" />
+    <ClCompile Include="Dependencies\minhook\src\trampoline.c" />
     <ClCompile Include="Source\Features\AutoShoot.cpp" />
     <ClCompile Include="Source\Features\DebugMode.cpp" />
+    <ClCompile Include="Source\Features\Features.cpp" />
     <ClCompile Include="Source\Features\InGameCheats.cpp" />
     <ClCompile Include="Source\Features\Lives.cpp" />
     <ClCompile Include="Source\Features\Rockets.cpp" />
     <ClCompile Include="Source\Features\Shield.cpp" />
     <ClCompile Include="Source\Features\FirePower.cpp" />
     <ClCompile Include="Source\Omelette.cpp" />
+    <ClCompile Include="Source\Settings.cpp" />
     <ClCompile Include="Source\Utils.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Source\GUI.cpp" />

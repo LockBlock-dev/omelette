@@ -6,10 +6,12 @@ void Rockets::run()
 {
     PlayerData *playerData = Context::playerData;
         
-    int* addr = (int*)&playerData->rocketsCount;
+    if (playerData) {
+        int* addr = (int*)&playerData->rocketsCount;
 
-    if (addr > (int*)Context::moduleBase) // Prevents crash when player dies (address is freed)
-    {
-        *addr += 1;
+        if (addr) // Prevents crash when player dies (address is freed)
+        {
+            *addr += 1;
+        }
     }
 }

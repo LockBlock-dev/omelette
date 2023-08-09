@@ -20,7 +20,7 @@ DWORD WINAPI MainThread(HMODULE instance)
 
     cheat::start(instance);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 BOOL APIENTRY DllMain(

@@ -8,8 +8,13 @@
 #include "Rockets.h"
 #include "Shield.h"
 
+class FeaturesManager {
+public:
+    static FeaturesManager& getInstance() {
+        static FeaturesManager instance;
+        return instance;
+    }
 
-struct Features {
     AutoShoot autoshoot;
     DebugMode debugmode;
     FirePower firepower;
@@ -17,4 +22,7 @@ struct Features {
     Lives lives;
     Rockets rockets;
     Shield shield;
+
+private:
+    FeaturesManager(); // Private constructor
 };

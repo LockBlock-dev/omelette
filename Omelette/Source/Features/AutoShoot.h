@@ -1,11 +1,10 @@
 #pragma once
-
-#include "../Settings.h"
+#include <Windows.h>
 
 
 class AutoShoot {
 public:
-    void run(Settings* settings);
+    void run(DWORD cbData, LPVOID lpvData);
 private:
-    HANDLE AutoShootThreadHandle{};
+    bool lastPoll;
 };

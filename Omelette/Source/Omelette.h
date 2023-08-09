@@ -2,5 +2,5 @@
 
 
 namespace cheat {
-	void start(HMODULE instance);
+	void start(HMODULE instance) noexcept;
 }

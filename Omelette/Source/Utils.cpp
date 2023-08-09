@@ -1,34 +1,17 @@
+#include <Windows.h>
+
 #include "Utils.h"
 
-
-char gameName[17] = "Chicken Invaders";
-
-INPUT makeKey(int directInputCode, bool up) // https://stackoverflow.com/a/71629807
-{
-    INPUT SHIFT;
-
-    SHIFT.type = INPUT_KEYBOARD;
-    SHIFT.ki.wVk = 0;
-    SHIFT.ki.wScan = directInputCode;
-    SHIFT.ki.dwFlags = KEYEVENTF_SCANCODE;
-    SHIFT.ki.dwExtraInfo = 0;
-    SHIFT.ki.time = 0;
-
-    if (up)
-    {
-        SHIFT.ki.dwFlags = KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP;
-    }
-
-    return SHIFT;
-}
 
 bool isFocused()
 {
     HWND foregroundWindow = GetForegroundWindow();
-    char windowTitle[255];
-    GetWindowTextA(foregroundWindow, windowTitle, 255);
+    WCHAR windowTitle[255];
+    GetWindowText(foregroundWindow, windowTitle, 255);
 
-    if (strcmp(windowTitle, gameName) == 0)
+    const WCHAR gameName[17] = L"Chicken Invaders";
+
+    if (!wcscmp(windowTitle, gameName))
     {
         return true;
     }
@@ -38,11 +21,21 @@ bool isFocused()
 
 uintptr_t getPtrAddr(uintptr_t ptr, std::vector<uintptr_t> offsets)
 {
+    if (ptr == 0) {
+        return -1;
+    }
+
     uintptr_t addr = ptr;
+
     for (unsigned int i = 0; i < offsets.size(); ++i)
     {
+        if (addr == 0) {
+            return -1;
+        }
+
         addr = *(uintptr_t*)addr;
         addr += offsets[i];
     }
+
     return addr;
 }

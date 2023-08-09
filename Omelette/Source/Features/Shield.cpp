@@ -1,18 +1,23 @@
 #include "Shield.h"
 #include "../Context.h"
+#include "../Settings.h"
 
 
-void Shield::run(Settings* settings)
+void Shield::run()
 {
-    if (settings->shield)
+    Settings& settings = Settings::getInstance();
+
+    if (settings.shield)
     {
         PlayerData *playerData = Context::playerData;
         
-        int* addr = (int*)&playerData->shieldTimeout;
+        if (playerData) {
+            int* addr = (int*)&playerData->shieldTimeout;
 
-        if (addr > (int*)Context::moduleBase) // Prevents crash when player dies (address is freed)
-        {
-            *addr = settings->shieldTimeout;
+            if (addr) // Prevents crash when player dies (address is freed)
+            {
+                *addr = settings.shieldTimeout;
+            }
         }
     }
 }

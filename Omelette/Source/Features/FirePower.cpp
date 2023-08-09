@@ -1,18 +1,22 @@
 #include "FirePower.h"
 #include "../Context.h"
+#include "../Settings.h"
 
-
-void FirePower::run(Settings* settings)
+void FirePower::run()
 {
-    if (settings->customFirepower)
+    Settings& settings = Settings::getInstance();
+
+    if (settings.customFirepower)
     {       
         PlayerData *playerData = Context::playerData;
 
-        int* addr = (int*)&playerData->firepower;
+        if (playerData) {
+            int* addr = (int*)&playerData->firepower;
 
-        if (addr > (int*)Context::moduleBase) // Prevents crash when player dies (address is freed)
-        {
-            *addr = settings->firepower;
+            if (addr) // Prevents crash when player dies (address is freed)
+            {
+                *addr = settings.firepower;
+            }
         }
     }
 }
